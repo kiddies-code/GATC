@@ -1,0 +1,22 @@
+{
+    "php-sig.php-smarthints.filteredFunctionList": [
+        "apache",
+        "dbx",
+        "dbplus",
+        "dbase",
+        "ibase",
+        "ftp",
+        "http",
+        "imap",
+        "msql",
+        "mysql",
+        "mysqli",
+        "pdo",
+        "postgres",
+        "pgsqlsession",
+        "sqlite",
+        "sybase",
+        "xmlparser",
+        "xmlreadwrite"
+    ]
+}
