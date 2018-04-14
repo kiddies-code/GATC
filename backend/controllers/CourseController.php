@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use common\models\Course;
+use common\models\Peserta;
 use backend\models\CourseSearch;
 use backend\models\PesertaSearch;
 use yii\web\Controller;
@@ -76,10 +77,12 @@ class CourseController extends Controller
             $model->image = 'uploads/'.$NameImage;
             if ($model->save()){
             $image -> saveAs('uploads/'.$NameImage);
+            mkdir('../../frontend/web/uploads/'.$model->nama_course.'/');
             return $this->redirect(['view', 'id' => $model->ID]); 
             }
             }
             $model->save();
+            mkdir('../../frontend/web/uploads/'.$model->nama_course.'/');
             return $this->redirect(['view', 'id' => $model->ID]); 
         } else {
             return $this->render('create', [
@@ -108,6 +111,7 @@ class CourseController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $pathlama = '../../frontend/web/uploads/'.$model->nama_course.'/';
         $sementara = $model->image;
         if ($model->load(Yii::$app->request->post())) {
             $image =UploadedFile::getInstance($model,'image');
@@ -116,11 +120,13 @@ class CourseController extends Controller
             $model->image = 'uploads/'.$NameImage;
             if ($model->save()){
             $image -> saveAs('uploads/'.$NameImage);
+            rename($pathlama,'../../frontend/web/uploads/'.$model->nama_course.'/');
             return $this->redirect(['view', 'id' => $model->ID]);
             }
             }
             $model->image = $sementara;
             $model->save();
+            rename($pathlama,'../../frontend/web/uploads/'.$model->nama_course.'/');
             return $this->redirect(['view', 'id' => $model->ID]);
         } else {
             return $this->render('update', [
@@ -137,7 +143,9 @@ class CourseController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        rmdir('../../frontend/web/uploads/'.$model->nama_course.'/');
+        $model->delete();
 
         return $this->redirect(['index']);
     }
@@ -157,4 +165,26 @@ class CourseController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+    
+     public function actionDpeserta($id) 
+   { 
+    $download = Peserta::findOne($id); 
+    $path='../../frontend/web/uploads/'.$download->coursePeserta->nama_course.'/'.$download->bukti_bayar;
+    if (file_exists($path)) {
+        return Yii::$app->response->sendFile($path);
+    }else{
+        echo 'file not exists...';
+    }
+   }
+    
+    public function actionVpeserta($id) 
+   { 
+    $download = Peserta::findOne($id); 
+    $path='../../frontend/web/uploads/'.$download->coursePeserta->nama_course.'/'.$download->bukti_bayar;
+    if (file_exists($path)) {
+        return Yii::$app->response->sendFile($path,$download->bukti_bayar,['inline'=>true]);
+    }else{
+        echo 'file not exists...';
+    }
+   }
 }

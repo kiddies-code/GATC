@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-<?php Pjax::begin(); ?>    <?= GridView::widget([
+   <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
@@ -31,11 +31,20 @@ $this->params['breadcrumbs'][] = $this->title;
             'email:email',
             'hp',
             // 'status',
-            'bukti_bayar',
+//            'bukti_bayar',
+            [
+                'attribute'=>'bukti_bayar',
+                'format'=>'raw',
+                'value' => function($data){
+            return
+            Html::a('View', ['peserta/display', 'id' => $data->ID],['class' => 'btn btn-warning']).'&nbsp;&nbsp;'.
+            Html::a('Download', ['peserta/download', 'id' => $data->ID],['class' => 'btn btn-primary']);
+            }
+            ],
 
             ['class' => 'yii\grid\ActionColumn',
              'template'=>'{update}&nbsp;&nbsp;&nbsp;{delete}'
             ],
         ],
     ]); ?>
-<?php Pjax::end(); ?></div>
+</div>

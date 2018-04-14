@@ -21,7 +21,6 @@ $this->params['breadcrumbs'][] = $this->title;
      <p>
         <?= Html::a('Create Participant', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-    <?php Pjax::begin(); ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -39,11 +38,19 @@ $this->params['breadcrumbs'][] = $this->title;
             'email:email',
             'username',
             'hp',
-            'bukti_bayar',
+//            'bukti_bayar',
+            [
+                'attribute'=>'bukti_bayar',
+                'format'=>'raw',
+                'value' => function($data){
+            return
+            Html::a('View', ['peserta/display', 'id' => $data->ID],['class' => 'btn btn-warning']).'&nbsp;&nbsp;'.
+            Html::a('Download', ['peserta/download', 'id' => $data->ID],['class' => 'btn btn-primary']);
+            }
+            ],
             'status',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
-    <?php Pjax::end(); ?>
 </div>

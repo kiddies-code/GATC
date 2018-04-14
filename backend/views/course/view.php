@@ -64,16 +64,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>'userPeserta.username',
             ],
             'hp',
-            'bukti_bayar',
-//            [
-//                  'attribute'=>'Download',
-//                  'format'=>'raw',
-//                  'value' => function($data)
-//                    {
-//                return Html::a('Download file', ['course/download', 'id' => $data->ID],['class' => 'btn btn-primary']);
-//
-//                    }
-//                    ],
+//            'bukti_bayar',
+            [
+                'attribute'=>'bukti_bayar',
+                'format'=>'raw',
+                'value' => function($data){
+            return
+            Html::a('View', ['course/vpeserta', 'id' => $data->ID],['class' => 'btn btn-warning']).'&nbsp;&nbsp;'.
+            Html::a('Download', ['course/dpeserta', 'id' => $data->ID],['class' => 'btn btn-primary']);
+            }
+            ],
             'status',
 
             ['class' => 'yii\grid\ActionColumn'],
