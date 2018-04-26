@@ -7,6 +7,10 @@ $this->title = 'My Yii Application';
 <div class="site-index">
 
     <div class="jumbotron">
+        
+        <img src='<?= Yii::$app->urlManagerFrontend->baseUrl ?>/images/GATC.png' align='center' width="50%">
+        <br>
+        <br>
         <h1>SELAMAT DATANG</h1>
         <p class="lead">Gontor Agrotech Training Centre</p>
 

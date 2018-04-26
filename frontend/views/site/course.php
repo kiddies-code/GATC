@@ -18,7 +18,7 @@ if($C->status =='aktif'){
 ?>
 <div class="row kursus col-lg-12">
     <div class=" col-lg-4 pull-left" style='padding-left:22px; margin-right:10px;'>
-    <img src="../../backend/web/<?= $C->image; ?>" class="fotokursus img-rounded"><br>
+    <img src="<?= Yii::$app->urlManagerBackend->baseUrl ?>/<?= $C->image; ?>" class="fotokursus img-rounded"><br>
     </div>
     <div class=" detkurs">
         <?= Html::a('<b style="font-size:22px">'.$C->nama_course.'</b>',['site/viewcourse','ID'=>$C->ID])."<hr>"; ?>

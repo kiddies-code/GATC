@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Html;
+use yii\helpers\Url;
 /* @var $this yii\web\View */
 
 $this->title = 'Gontor Agrotech Training Center';
@@ -12,9 +13,8 @@ $this->title = 'Gontor Agrotech Training Center';
             <div class="col-lg-8">
                 
                 <div class="jumbotron">
-        <h1>Welcome....</h1>
-
-        <p class="lead">Selamat Datang di Website Gontor Agrotech Training Centre</p>
+        <br>
+        <img src='<?= Yii::$app->urlManager->baseUrl ?>/images/GATC.png' align='center' width="90%">
 
     </div>
 

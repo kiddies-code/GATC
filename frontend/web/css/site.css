@@ -19,7 +19,7 @@ body {
     background-color: black;
     border-top: 1px solid #ddd;
     padding-top: 20px;
-    color: white;
+    color: dimgrey;
 }
 
 .jumbotron {
@@ -132,13 +132,11 @@ a.desc:after {
 }
 
 .fotokursus {
-   width: 9cm;
-   height: 6.5cm;
+   width: 100%;
 }
 
 .fotodetail {
-    width: 15cm;
-    height: auto;
+    width: 50%;
 }
 
 .bio{
@@ -152,7 +150,7 @@ a.desc:after {
 
 .kursus{
     background-color:#f8f8e8;
-    padding: 25px 10px 25px 10px;
+    padding: 25px 50px 50px 50px;
     margin-bottom: 20px;
     border-radius: 12px;
     height:auto;

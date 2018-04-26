@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
           <table>
             <tr>
             <td>
-                <img src="../web/images/blank_foto.png" class="fotoprofile img-rounded">
+                <img src="<?= Yii::$app->urlManager->baseUrl ?>/images/blank_foto.png" class="fotoprofile img-rounded">
             </td>
             <td class="bio">
                 <h4><b>Alfu Laila, SP., M.Sc</b><br>
@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
           <table>
             <tr>
             <td>
-                <img src="../web/images/blank_foto.png" class="fotoprofile img-rounded">
+                <img src="<?= Yii::$app->urlManager->baseUrl ?>/images/blank_foto.png" class="fotoprofile img-rounded">
             </td>
             <td class="bio">
                 <h4><b>Lutfy Ditya C., S.P., M.P</b><br>
@@ -54,7 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <table>
             <tr>
             <td>
-                <img src="../web/images/blank_foto.png" class="fotoprofile img-rounded">
+                <img src="<?= Yii::$app->urlManager->baseUrl ?>/images/blank_foto.png" class="fotoprofile img-rounded">
             </td>
             <td class="bio">
                 <h4><b>Alfu Laila, SP., M.Sc</b></h4>
@@ -67,7 +67,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <table>
             <tr>
             <td>
-                <img src="../web/images/blank_foto.png" class="fotoprofile img-rounded">
+                <img src="<?= Yii::$app->urlManager->baseUrl ?>/images/blank_foto.png" class="fotoprofile img-rounded">
             </td>
             <td class="bio">
                 <h4><b>Dwi Rifianto, MMA</b></h4>
@@ -80,7 +80,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <table>
             <tr>
             <td>
-                <img src="../web/images/blank_foto.png" class="fotoprofile img-rounded">
+                <img src="<?= Yii::$app->urlManager->baseUrl ?>/images/blank_foto.png" class="fotoprofile img-rounded">
             </td>
             <td class="bio">
                 <h4><b>Use Etica, SP., MMA</b></h4>
@@ -93,7 +93,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <table>
             <tr>
             <td>
-                <img src="../web/images/blank_foto.png" class="fotoprofile img-rounded">
+                <img src="<?= Yii::$app->urlManager->baseUrl ?>/images/blank_foto.png" class="fotoprofile img-rounded">
             </td>
             <td class="bio">
                 <h4><b>Lutfy Ditya C., S.P., M.P</b></h4>
@@ -106,7 +106,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <table>
             <tr>
             <td>
-                <img src="../web/images/blank_foto.png" class="fotoprofile img-rounded">
+                <img src="<?= Yii::$app->urlManager->baseUrl ?>/images/blank_foto.png" class="fotoprofile img-rounded">
             </td>
             <td class="bio">
                 <h4><b>Niken Trisnaningrum, S.P., M.Si</b></h4>
@@ -119,7 +119,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <table>
             <tr>
             <td>
-                <img src="../web/images/blank_foto.png" class="fotoprofile img-rounded">
+                <img src="<?= Yii::$app->urlManager->baseUrl ?>/images/blank_foto.png" class="fotoprofile img-rounded">
             </td>
             <td class="bio">
                 <h4><b>Mahmudah Hamawi, SP., MP</b></h4>
@@ -132,7 +132,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <table>
             <tr>
             <td>
-                <img src="../web/images/blank_foto.png" class="fotoprofile img-rounded">
+                <img src="<?= Yii::$app->urlManager->baseUrl ?>/images/blank_foto.png" class="fotoprofile img-rounded">
             </td>
             <td class="bio">
                 <h4><b>Haris Setyaningrum, S.Si., M.Sc</b></h4>
@@ -145,7 +145,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <table>
             <tr>
             <td>
-                <img src="../web/images/blank_foto.png" class="fotoprofile img-rounded">
+                <img src="<?= Yii::$app->urlManager->baseUrl ?>/images/blank_foto.png" class="fotoprofile img-rounded">
             </td>
             <td class="bio">
                 <h4><b>Ir. Widodo</b></h4>
@@ -161,7 +161,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <table>
             <tr>
             <td>
-                <img src="../web/images/blank_foto.png" class="fotoprofile img-rounded">
+                <img src="<?= Yii::$app->urlManager->baseUrl ?>/images/blank_foto.png" class="fotoprofile img-rounded">
             </td>
             <td class="bio">
                 <h4><b>Niken Ratnasari, S.P</b></h4>
@@ -174,7 +174,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <table>
             <tr>
             <td>
-                <img src="../web/images/blank_foto.png" class="fotoprofile img-rounded">
+                <img src="<?= Yii::$app->urlManager->baseUrl ?>/images/blank_foto.png" class="fotoprofile img-rounded">
             </td>
             <td class="bio">
                 <h4><b>Muhamad Malik</b></h4>
@@ -187,7 +187,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <table>
             <tr>
             <td>
-                <img src="../web/images/blank_foto.png" class="fotoprofile img-rounded">
+                <img src="<?= Yii::$app->urlManager->baseUrl ?>/images/blank_foto.png" class="fotoprofile img-rounded">
             </td>
             <td class="bio">
                 <h4><b>Kholqin Jadid</b></h4>

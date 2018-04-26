@@ -37,6 +37,20 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        
+        'urlManager'=>[
+            'enablePrettyUrl'=>false,
+            'class'=>'yii\web\UrlManager',
+            'hostInfo'=>'http://admin.gatc.site',
+        ],
+        'urlManagerFrontend'=>[
+            'enablePrettyUrl'=>true,
+            'class'=>'yii\web\UrlManager',
+            'showScriptName'=>false,
+            'suffix'=>'.html',
+            'baseUrl'=>'http://gatc.site',
+//            'baseInfo'=>'http://localhost/frontend',
+        ],
         /*
         'urlManager' => [
             'enablePrettyUrl' => true,
