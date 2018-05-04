@@ -88,7 +88,11 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
              'jumlah_peserta',
              'jumlah_max',
-             'status',
+//             'status',
+            [
+              'attribute'=>'status',
+              'filter'=>['aktif'=>'Aktif','nonaktif'=>'Nonaktif'],
+            ],
             // 'image',
 
             ['class' => 'yii\grid\ActionColumn'],

@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'status',
 //            'bukti_bayar',
             [
-                'attribute'=>'bukti_bayar',
+                'header'=>'Proposal',
                 'format'=>'raw',
                 'value' => function($data){
             return

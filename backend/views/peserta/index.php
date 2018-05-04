@@ -48,7 +48,11 @@ $this->params['breadcrumbs'][] = $this->title;
             Html::a('Download', ['peserta/download', 'id' => $data->ID],['class' => 'btn btn-primary']);
             }
             ],
-            'status',
+//            'status',
+            [
+                'attribute'=>'status',
+                'filter'=>[ 'menunggu' => 'Menunggu', 'verifikasi' => 'Verifikasi', 'lunas'=>'Lunas' ],
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

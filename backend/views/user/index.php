@@ -32,7 +32,11 @@ $this->params['breadcrumbs'][] = $this->title;
             //'password_hash',
             // 'password_reset_token',
             'email:email',
-            'status_admin',
+//            'status_admin',
+            [
+                'attribute'=>'status_admin',
+                'filter'=>['admin'=>'Admin','user'=>'User'],
+            ],
 //            'status',
             // 'created_at',
             // 'updated_at',

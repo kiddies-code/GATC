@@ -66,9 +66,9 @@ class PesertaSearch extends Peserta
         ]);
 
         $query->andFilterWhere(['like', 'atas_nama', $this->atas_nama])
-            ->andFilterWhere(['like', 'email', $this->email])
+            ->andFilterWhere(['like', 'peserta.email', $this->email])
             ->andFilterWhere(['like', 'hp', $this->hp])
-            ->andFilterWhere(['like', 'status', $this->status])
+            ->andFilterWhere(['like', 'peserta.status', $this->status])
             ->andFilterWhere(['like', 'user.username', $this->username]);
 //            ->andFilterWhere(['like', 'course.nama_course', $this->id_course]);  
 

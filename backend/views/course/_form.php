@@ -46,9 +46,9 @@ use yii\web\UploadedFile;
     
     <?= $form->field($model, 'kontak1')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'kontak2')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'kontak2')->textInput(['maxlength' => true,'placeholder'=>'Kosongkan jika tidak ada']) ?>
 
-    <?= $form->field($model, 'kontak3')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'kontak3')->textInput(['maxlength' => true,'placeholder'=>'Kosongkan jika tidak ada']) ?>
 
     <?= $form->field($model, 'tanggal_buka')->widget(
     DatePicker::className(), [
@@ -74,7 +74,7 @@ use yii\web\UploadedFile;
         ]
 ]);?>
 
-    <?= $form->field($model, 'jumlah_max')->textInput() ?>
+    <?= $form->field($model, 'jumlah_max')->textInput(['placeholder'=>'Jika unlimited masukkan 99999']) ?>
 
     <?= $form->field($model, 'status')->dropDownList([ 'aktif' => 'Aktif', 'nonaktif' => 'Nonaktif', ]) ?>
 
