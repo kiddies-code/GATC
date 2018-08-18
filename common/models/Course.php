@@ -11,18 +11,23 @@ use Yii;
  * @property string $nama_course
  * @property string $detail_course
  * @property string $tanggal_pelaksanaan
- * @property string $kontak1
- * @property string $kontak2
- * @property string $kontak3
- * @property string $tanggal_buka
+ * @property string $tanggal_berakhir
+ * @property integer $harga
  * @property string $tanggal_tutup
  * @property integer $jumlah_peserta
  * @property integer $jumlah_max
  * @property string $status
+ * @property string $image
+ * @property string $berkas
+ * @property string $bayar
+ * @property string $proposal
+ * @property string $tim_anggota
+ *
+ * @property Cp[] $cps
+ * @property Peserta[] $pesertas
  */
 class Course extends \yii\db\ActiveRecord
 {
-    public $idnya;
     /**
      * @inheritdoc
      */
@@ -37,13 +42,12 @@ class Course extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nama_course', 'detail_course', 'tanggal_pelaksanaan', 'kontak1', 'tanggal_buka', 'harga','tanggal_tutup','jumlah_max'], 'required'],
-            [['detail_course', 'status'], 'string'],
-            [['tanggal_pelaksanaan', 'tanggal_buka', 'tanggal_tutup','tanggal_berakhir'], 'safe'],
-            [['jumlah_peserta', 'jumlah_max','harga'], 'integer'],
-            [['nama_course'], 'string', 'max' => 100],
-            [['kontak1', 'kontak2', 'kontak3'], 'string', 'max' => 250],
-            [['image'],'file','extensions'=>'png,jpg']
+            [['nama_course', 'detail_course', 'tanggal_pelaksanaan', 'tanggal_tutup'], 'required'],
+            [['detail_course', 'status', 'berkas', 'bayar', 'proposal', 'tim_anggota'], 'string'],
+            [['tanggal_pelaksanaan', 'tanggal_berakhir', 'tanggal_tutup'], 'safe'],
+            [['harga', 'jumlah_peserta', 'jumlah_max'], 'integer'],
+            [['nama_course'], 'string', 'max' => 200],
+            [['image'], 'file', 'extensions' => 'png,jpeg,jpeg'],
         ];
     }
 
@@ -54,27 +58,36 @@ class Course extends \yii\db\ActiveRecord
     {
         return [
             'ID' => 'ID',
-            'nama_course' => 'Nama Kursus',
-            'detail_course' => 'Detail Kursus',
-            'tanggal_pelaksanaan' => 'Tanggal Mulai Kursus',
-            'tanggal_berakhir' => 'Tanggal Berakhir Kursus',
-            'harga'=>'Harga',
-            'kontak1' => 'Kontak 1',
-            'kontak2' => 'Kontak 2',
-            'kontak3' => 'Kontak 3',
-            'tanggal_buka' => 'Tanggal Buka Pendaftaran',
+            'nama_course' => 'Nama Pelatihan',
+            'detail_course' => 'Detail Pelatihan',
+            'tanggal_pelaksanaan' => 'Tanggal Pelaksanaan Pelatihan',
+            'tanggal_berakhir' => 'Tanggal Berakhir Pelatihan',
+            'harga' => 'Harga',
             'tanggal_tutup' => 'Tanggal Tutup Pendaftaran',
             'jumlah_peserta' => 'Jumlah Peserta',
-            'jumlah_max' => 'Jumlah Maksimal Peserta',
+            'jumlah_max' => 'Kuota Maksimal',
             'status' => 'Status',
-            'image'=>'Sampul Kursus' 
+            'image' => 'Image',
+            'berkas' => 'Pengumpulan Berkas',
+            'bayar' => 'Pembayaran',
+            'proposal' => 'Pengumpulan Proposal',
+            'tim_anggota' => 'Berbentuk Tim',
         ];
     }
-    
-     public function getPesertaCourse(){
-        return $this->hasMany(Peserta::className(),['id_course'=>'ID']);
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCpCourse()
+    {
+        return $this->hasMany(Cp::className(), ['id_course' => 'ID']);
     }
-    
-    
-    
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPesertaCourse()
+    {
+        return $this->hasMany(Peserta::className(), ['id_course' => 'ID']);
+    }
 }

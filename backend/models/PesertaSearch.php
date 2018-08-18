@@ -19,7 +19,7 @@ class PesertaSearch extends Peserta
     {
         return [
             [['ID'], 'integer'],
-            [['atas_nama', 'email', 'hp','status', 'id_course', 'username'], 'safe'],
+            [['atas_nama', 'email', 'hp','status', 'id_course', 'user'], 'safe'],
         ];
     }
 
@@ -69,7 +69,7 @@ class PesertaSearch extends Peserta
             ->andFilterWhere(['like', 'peserta.email', $this->email])
             ->andFilterWhere(['like', 'hp', $this->hp])
             ->andFilterWhere(['like', 'peserta.status', $this->status])
-            ->andFilterWhere(['like', 'user.username', $this->username]);
+            ->andFilterWhere(['like', 'user.username', $this->user]);
 //            ->andFilterWhere(['like', 'course.nama_course', $this->id_course]);  
 
         return $dataProvider;

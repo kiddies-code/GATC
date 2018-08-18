@@ -74,14 +74,30 @@ class PesertaController extends Controller
         
         if ($model->load(Yii::$app->request->post())) {
             $bukti_bayar =UploadedFile::getInstance($model,'bukti_bayar');
+            $f_id =UploadedFile::getInstance($model,'f_id');
+            $f_berkas =UploadedFile::getInstance($model,'f_berkas');
+            $f_proposal =UploadedFile::getInstance($model,'f_proposal');
             if(!empty($bukti_bayar)){
-            $NameImage = 'Bayar-'.$model->atas_nama.'.'.$bukti_bayar->extension;
-            $model->bukti_bayar = $NameImage;
-            if ($model->save()){
-            $bukti_bayar -> saveAs('../../frontend/web/uploads/'.$model->coursePeserta->nama_course.'/'.$NameImage);
-            return $this->redirect(['view', 'id' => $model->ID]); 
+            $NameImage1 = 'Bayar-'.$model->atas_nama.'-'.date('YmdHis').'.'.$bukti_bayar->extension;
+            $model->bukti_bayar = $NameImage1;
+            $bukti_bayar -> saveAs('../../frontend/web/uploads/'.$model->coursePeserta->nama_course.'/'.$NameImage1); 
             }
+            if(!empty($f_id)){
+            $NameImage2 = 'Id-'.$model->atas_nama.'-'.date('YmdHis').'.'.$f_id->extension;
+            $model->f_id = $NameImage2;
+            $f_id -> saveAs('../../frontend/web/uploads/'.$model->coursePeserta->nama_course.'/'.$NameImage2); 
             }
+            if(!empty($f_berkas)){
+            $NameImage3 = 'Berkas-'.$model->atas_nama.'-'.date('YmdHis').'.'.$f_berkas->extension;
+            $model->f_berkas = $NameImage3;
+            $f_berkas -> saveAs('../../frontend/web/uploads/'.$model->coursePeserta->nama_course.'/'.$NameImage3); 
+            }
+            if(!empty($f_proposal)){
+            $NameImage4 = 'Pro-'.$model->atas_nama.'-'.date('YmdHis').'.'.$f_proposal->extension;
+            $model->f_proposal = $NameImage4;
+            $f_proposal -> saveAs('../../frontend/web/uploads/'.$model->coursePeserta->nama_course.'/'.$NameImage4); 
+            }
+            $model->status="verifikasi";
             $model->save();
             return $this->redirect(['view', 'id' => $model->ID]); 
         } else {
@@ -100,18 +116,45 @@ class PesertaController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $sementara = $model->bukti_bayar;
+        $sementara1 = $model->bukti_bayar;
+        $sementara2 = $model->f_id;
+        $sementara3 = $model->f_berkas;
+        $sementara4 = $model->f_proposal;
         if ($model->load(Yii::$app->request->post())) {
            $bukti_bayar =UploadedFile::getInstance($model,'bukti_bayar');
+           $f_id =UploadedFile::getInstance($model,'f_id');
+           $f_berkas =UploadedFile::getInstance($model,'f_berkas');
+           $f_proposal =UploadedFile::getInstance($model,'f_proposal');
             if(!empty($bukti_bayar)){
-            $NameImage = 'Bayar-'.$model->atas_nama.'.'.$bukti_bayar->extension;
-            $model->bukti_bayar = $NameImage;
-            if ($model->save()){
-            $bukti_bayar -> saveAs('../../frontend/web/uploads/'.$model->coursePeserta->nama_course.'/'.$NameImage);
-            return $this->redirect(['view', 'id' => $model->ID]); 
+            $NameImage1 = 'Bayar-'.$model->atas_nama.'-'.date('YmdHis').'.'.$bukti_bayar->extension;
+            $model->bukti_bayar = $NameImage1;
+            $bukti_bayar -> saveAs('../../frontend/web/uploads/'.$model->coursePeserta->nama_course.'/'.$NameImage1); 
+//            $bukti_bayar -> saveAs('../web/uploads/'.$NameImage1); 
+            }else{
+            $model->bukti_bayar=$sementara1;
             }
+            if(!empty($f_id)){
+            $NameImage2 = 'Id-'.$model->atas_nama.'-'.date('YmdHis').'.'.$f_id->extension;
+            $model->f_id = $NameImage2;
+            $f_id -> saveAs('../../frontend/web/uploads/'.$model->coursePeserta->nama_course.'/'.$NameImage2); 
+            }else{
+            $model->f_id=$sementara2;
             }
-            $model->bukti_bayar=$sementara;
+            if(!empty($f_berkas)){
+            $NameImage3 = 'Berkas-'.$model->atas_nama.'-'.date('YmdHis').'.'.$f_berkas->extension;
+            $model->f_berkas = $NameImage3;
+            $f_berkas -> saveAs('../../frontend/web/uploads/'.$model->coursePeserta->nama_course.'/'.$NameImage3); 
+            }else{
+            $model->f_berkas=$sementara3;
+            }
+            if(!empty($f_proposal)){
+            $NameImage4 = 'Pro-'.$model->atas_nama.'-'.date('YmdHis').'.'.$f_proposal->extension;
+            $model->f_proposal = $NameImage4;
+            $f_proposal -> saveAs('../../frontend/web/uploads/'.$model->coursePeserta->nama_course.'/'.$NameImage4); 
+            }else{
+            $model->f_proposal=$sementara4;
+            }
+            $model->status="verifikasi";
             $model->save();
             return $this->redirect(['view', 'id' => $model->ID]); 
         } else {
@@ -171,4 +214,87 @@ class PesertaController extends Controller
         echo 'file not exists...';
     }
    }
+    
+    public function actionVid($id) 
+   { 
+    $download = Peserta::findOne($id); 
+    $path='../../frontend/web/uploads/'.$download->coursePeserta->nama_course.'/'.$download->f_id;
+    if (file_exists($path)) {
+        return Yii::$app->response->sendFile($path,$download->f_id,['inline'=>true]);
+    }else{
+        echo 'file not exists...';
+    }
+   }
+    
+    public function actionDberkas($id) 
+   { 
+    $download = Peserta::findOne($id); 
+    $path='../../frontend/web/uploads/'.$download->coursePeserta->nama_course.'/'.$download->f_berkas;
+    if (file_exists($path)) {
+        return Yii::$app->response->sendFile($path);
+    }else{
+        echo 'file not exists...';
+    }
+   }
+    
+    public function actionVberkas($id) 
+   { 
+    $download = Peserta::findOne($id); 
+    $path='../../frontend/web/uploads/'.$download->coursePeserta->nama_course.'/'.$download->f_berkas;
+    if (file_exists($path)) {
+        return Yii::$app->response->sendFile($path,$download->f_berkas,['inline'=>true]);
+    }else{
+        echo 'file not exists...';
+    }
+   }
+    
+    public function actionDproposal($id) 
+   { 
+    $download = Peserta::findOne($id); 
+    $path='../../frontend/web/uploads/'.$download->coursePeserta->nama_course.'/'.$download->f_proposal;
+    if (file_exists($path)) {
+        return Yii::$app->response->sendFile($path);
+    }else{
+        echo 'file not exists...';
+    }
+   }
+    
+    public function actionVproposal($id) 
+   { 
+    $download = Peserta::findOne($id); 
+    $path='../../frontend/web/uploads/'.$download->coursePeserta->nama_course.'/'.$download->f_proposal;
+    if (file_exists($path)) {
+        return Yii::$app->response->sendFile($path,$download->f_proposal,['inline'=>true]);
+    }else{
+        echo 'file not exists...';
+    }
+   }
+    
+     public function actionLunas($id){
+        
+        $model = $this->findModel($id);
+        $model->status = 'lunas';
+        $model->save();
+        return $this->redirect(['view', 'id' => $model->ID]); 
+        
+    }
+    
+    public function actionTolak($id){
+        
+        $model = $this->findModel($id);
+        $model->status = 'ditolak';
+        $model->save();
+        return $this->redirect(['view', 'id' => $model->ID]); 
+        
+    }
+    
+     public function actionReset($id){
+        
+        $model = $this->findModel($id);
+        $model->status = 'verifikasi';
+        $model->save();
+        return $this->redirect(['view', 'id' => $model->ID]); 
+        
+    }
+    
 }

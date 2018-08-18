@@ -8,11 +8,11 @@ use yii\widgets\Pjax;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Registered';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="peserta-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1 style='margin-bottom:0px;margin-top:0px;'><?= Html::encode($this->title) ?></h1>
+     <hr style='margin-top:0px;'>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
    <?= GridView::widget([
@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'status',
 //            'bukti_bayar',
             [
-                'header'=>'Proposal',
+                'attribute'=>'bukti_bayar',
                 'format'=>'raw',
                 'value' => function($data){
             return

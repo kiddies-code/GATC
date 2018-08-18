@@ -26,20 +26,21 @@ $this->title = 'Gontor Agrotech Training Center';
             
             </div>
             <div class="col-lg-3 pull-right kursus">
-                <h3>Course</h3>
-<hr>
+                <h3 style='margin-bottom:5px;'>Course</h3>
+<hr style='margin:0px;border-color:black;'>
                 <?php
+                $jess = 0;
                     foreach($model as $C){ 
                 if($C->status =='aktif'){
                 ?>
-                
-                <div>
-                <?= Html::a('<h5><b>'.$C->nama_course.'</b></h5>',['site/viewcourse','ID'=>$C->ID]);
-                    echo "<p align='justify'>".substr($C->detail_course,0,60)."...</p><hr>";
+                <?= Html::a('<h5 style="color:#336033"><b>'.$C->nama_course.'</b></h5>',['site/viewcourse','ID'=>$C->ID]);
+                    echo "<p align='justify' style='font-size:12px;'>".''.substr($C->detail_course,0,100)."...</p><hr style='margin:0px; margin-bottom:20px;border-color:#c6c2c2;'>";
                     ?>
-                </div>
+                
                 <?php
+                $jess++; 
                 }
+                if ($jess == 5) break;
                      }  ?>
                 
             </div>

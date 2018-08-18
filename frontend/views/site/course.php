@@ -5,24 +5,24 @@
 use yii\helpers\Html;
 
 $this->title = 'Courses';
-$this->params['breadcrumbs'][] = $this->title;
 
 ?>
-<div class="site-index">
-<h1>Courses</h1>
+<div class="site-index" style="padding:0px 10px 0px 10px;">
+<h1 style='margin-bottom:0px;margin-top:0px;'>Courses</h1>
+    <hr style='margin-top:0px;margin-right:25px;'>
 <div class="body-content">
 <?php
 foreach($model as $C){ 
 if($C->status =='aktif'){
 
 ?>
-<div class="row kursus col-lg-12">
+<div class="row kursuss col-lg-12">
     <div class=" col-lg-4 pull-left" style='padding-left:22px; margin-right:10px;'>
-    <img src="<?= Yii::$app->urlManagerBackend->baseUrl ?>/<?= $C->image; ?>" class="fotokursus img-rounded"><br>
+    <img src="<?= Yii::$app->urlManagerBackend->baseUrl ?>/<?= $C->image; ?>" class="fotokursus img-rounded"><br><br>
     </div>
     <div class=" detkurs">
-        <?= Html::a('<b style="font-size:22px">'.$C->nama_course.'</b>',['site/viewcourse','ID'=>$C->ID])."<hr>"; ?>
-    <p align='justify'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= substr($C->detail_course,0,275)."..."; ?> </p>
+        <?= Html::a('<b style="font-size:22px;color:#336033">'.$C->nama_course.'</b>',['site/viewcourse','ID'=>$C->ID])."<hr style='margin-top:0px;border-color:#c6c2c2;'>"; ?>
+    <p align='justify' style='margin-right:15px'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= substr($C->detail_course,0,350)."..."; ?> </p>
     <br>
         <span class="pull-left "><b style="font-size:16px">Kuota Peserta: 
             

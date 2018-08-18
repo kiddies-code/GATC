@@ -19,7 +19,7 @@ class PesertaSearch extends Peserta
     {
         return [
             [['ID', 'id_course'], 'integer'],
-            [['atas_nama', 'email', 'hp', 'status', 'bukti_bayar','username'], 'safe'],
+            [['atas_nama', 'email', 'hp', 'status', 'bukti_bayar','user'], 'safe'],
         ];
     }
 
@@ -67,7 +67,7 @@ class PesertaSearch extends Peserta
             ->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['like', 'hp', $this->hp])
             ->andFilterWhere(['like', 'status', $this->status])
-            ->andFilterWhere(['like', 'username', Yii::$app->user->identity->username])
+            ->andFilterWhere(['like', 'user', Yii::$app->user->identity->id])
             ->andFilterWhere(['like', 'bukti_bayar', $this->bukti_bayar]);
 
         return $dataProvider;

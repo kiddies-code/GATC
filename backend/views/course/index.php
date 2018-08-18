@@ -1,5 +1,6 @@
 <?php
 
+use kartik\export\ExportMenu;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
@@ -10,25 +11,62 @@ use dosamigos\datepicker\DatePicker;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Courses';
-$this->params['breadcrumbs'][] = $this->title;
+
+$gridColumns = [
+//    ['class' => 'yii\grid\SerialColumn'],
+//            'ID',
+            'nama_course',
+            'detail_course',
+            'tanggal_pelaksanaan',
+            'tanggal_berakhir',
+            'tanggal_tutup',
+            'jumlah_peserta',
+            'jumlah_max',
+            'berkas',
+            'proposal',
+            'tim_anggota',
+            'bayar',
+            'harga',
+            'status',
+            
+//    ['class' => 'yii\grid\ActionColumn'],
+];
+
 ?>
 <div class="course-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= Html::encode($this->title) ?><hr style="margin-top:0px;"></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
+    <span class="pull-right">
+    <?=
+    ExportMenu::widget([
+            'dataProvider' => $dataProvider,
+            'columns' => $gridColumns,
+            ]).'<br><br>'    
+        ?></span>
     <p>
         <?= Html::a('Create Course', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-    <?php Pjax::begin(); ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'rowOptions' => function($model){
+            if($model->status == 'nonaktif'){
+                return ['class'=>'danger'];
+            }else{
+                
+            }
+        },
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
             //'ID',
-            'nama_course',
+            [
+                'attribute' => 'nama_course',
+                'contentOptions' => ['style' => 'width:20%;  white-space: normal;'],
+            ],
+//            'nama_course',
             //'detail_course:ntext',
             [
                 'attribute'=>'tanggal_pelaksanaan',
@@ -47,32 +85,19 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute'=>'tanggal_berakhir',
                 'value'=>'tanggal_berakhir',
                 'format'=>'raw',
-                'filter'=>DatePicker::widget([
-                        'model' => $searchModel,
-                        'attribute' => 'tanggal_berakhir',
-                            'clientOptions' => [
-                                'autoclose' => true,
-                                'format' => 'yyyy-mm-dd'
-                            ]
-                    ])        
+//                'filter'=>DatePicker::widget([
+//                        'model' => $searchModel,
+//                        'attribute' => 'tanggal_pelaksanaan',
+//                            'clientOptions' => [
+//                                'autoclose' => true,
+//                                'format' => 'yyyy-mm-dd'
+//                            ]
+//                    ])
             ],
-            'harga',
+//            'harga',
             //'kontak1',
             // 'kontak2',
             // 'kontak3',
-            [
-                'attribute'=>'tanggal_buka',
-                'value'=>'tanggal_buka',
-                'format'=>'raw',
-                'filter'=>DatePicker::widget([
-                        'model' => $searchModel,
-                        'attribute' => 'tanggal_buka',
-                            'clientOptions' => [
-                                'autoclose' => true,
-                                'format' => 'yyyy-mm-dd'
-                            ]
-                    ])        
-            ],
             [
                 'attribute'=>'tanggal_tutup',
                 'value'=>'tanggal_tutup',
@@ -90,6 +115,22 @@ $this->params['breadcrumbs'][] = $this->title;
              'jumlah_max',
 //             'status',
             [
+                'attribute' => 'berkas',
+                'filter'=>['Y'=>'Yes','N'=>'No'],
+            ],
+            [
+                'attribute' => 'bayar',
+                'filter'=>['Y'=>'Yes','N'=>'No'],
+            ],
+            [
+                'attribute' => 'proposal',
+                'filter'=>['Y'=>'Yes','N'=>'No'],
+            ],
+            [
+                'attribute' => 'tim_anggota',
+                'filter'=>['Y'=>'Yes','N'=>'No'],
+            ],
+            [
               'attribute'=>'status',
               'filter'=>['aktif'=>'Aktif','nonaktif'=>'Nonaktif'],
             ],
@@ -98,5 +139,4 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
-    <?php Pjax::end(); ?>
 </div>

@@ -121,8 +121,8 @@ a.desc:after {
 }
 
 .profile {
-    background-color:#f8f8e8;
-    padding: 5px 0px 5px 5px;
+    background-color:#d0f2d0;
+    padding: 5px 5px 5px 5px;
     margin: 10px;
     border-radius: 10px;
 }
@@ -149,8 +149,16 @@ a.desc:after {
 }
 
 .kursus{
-    background-color:#f8f8e8;
-    padding: 25px 50px 50px 50px;
+    background-color:#d0f2d0;
+    padding: 10px 30px 25px 30px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    height:auto;
+}
+
+.kursuss{
+    background-color:#d0f2d0;
+    padding: 20px 10px 0px 10px;
     margin-bottom: 20px;
     border-radius: 12px;
     height:auto;

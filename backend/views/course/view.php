@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\DetailView;
 use yii\grid\GridView;
 
@@ -32,16 +33,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'nama_course',
             'detail_course:ntext',
-            'harga',
             'tanggal_pelaksanaan',
             'tanggal_berakhir',
-            'kontak1',
-            'kontak2',
-            'kontak3',
-            'tanggal_buka',
             'tanggal_tutup',
+            'harga',
             'jumlah_peserta',
             'jumlah_max',
+            'bayar',
+            'berkas',
+            'proposal',
+            'tim_anggota',
             'status',
         ],
     ]) ?> 
@@ -52,31 +53,103 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => new yii\data\ActiveDataProvider(['query'=>$model->getPesertaCourse()]),
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            //'ID',
-            //'id_course',
+//            [
+//               'header' => 'Course Name',
+//               'value' => 'coursePeserta.nama_course',
+//                'contentOptions' => ['style' => 'width:20%;  white-space: normal;'],
+//            ],
             'atas_nama',
-            'email:email',
-            //'id_user',
-            [
-                'attribute'=>'id_user',
-                'value'=>'userPeserta.username',
-            ],
+//            'email:email',
+//            [
+//              'attribute'=>'user',
+//                'value' => 'userPeserta.username',
+//            ],
             'hp',
 //            'bukti_bayar',
+            [
+                'attribute'=>'f_id',
+                'format'=>'raw',
+                'value' => function($data){
+            if(!empty($data->f_id)){
+            return
+            Html::a('View', ['peserta/vId', 'id' => $data->ID],['class' => 'btn btn-info']);
+            }else{
+            return
+            "<p class='btn btn-danger' align='center'>No File</p>";
+            }
+            }
+            ],
             [
                 'attribute'=>'bukti_bayar',
                 'format'=>'raw',
                 'value' => function($data){
+            if(!empty($data->bukti_bayar)){
             return
-            Html::a('View', ['course/vpeserta', 'id' => $data->ID],['class' => 'btn btn-warning']).'&nbsp;&nbsp;'.
-            Html::a('Download', ['course/dpeserta', 'id' => $data->ID],['class' => 'btn btn-primary']);
+            Html::a('View', ['peserta/display', 'id' => $data->ID],['class' => 'btn btn-warning']).'&nbsp;&nbsp;'.
+            Html::a('Download', ['peserta/download', 'id' => $data->ID],['class' => 'btn btn-primary']);
+            }else{
+            return
+            "<p class='btn btn-danger' align='center'>No File</p>";
+            }
             }
             ],
-            'status',
+            [
+                'attribute'=>'f_proposal',
+                'format'=>'raw',
+                'value' => function($data){
+            if(!empty($data->f_proposal)){
+            return
+            Html::a('View', ['peserta/vProposal', 'id' => $data->ID],['class' => 'btn btn-warning']).'&nbsp;&nbsp;'.
+            Html::a('Download', ['peserta/dProposal', 'id' => $data->ID],['class' => 'btn btn-primary']);
+            }else{
+            return
+            "<p class='btn btn-danger' align='center'>No File</p>";
+            }
+            }
+            ],
+            [
+                'attribute'=>'f_berkas',
+                'format'=>'raw',
+                'value' => function($data){
+            if(!empty($data->f_berkas)){
+            return
+            Html::a('View', ['peserta/vBerkas', 'id' => $data->ID],['class' => 'btn btn-warning']).'&nbsp;&nbsp;'.
+            Html::a('Download', ['peserta/dBerkas', 'id' => $data->ID],['class' => 'btn btn-primary']);
+            }else{
+            return
+            "<p class='btn btn-danger' align='center'>No File</p>";
+            }
+            }
+            ],
+//            'status',
+            [
+                'attribute'=>'status',
+                'filter'=>[ 'menunggu' => 'Menunggu', 'verifikasi' => 'Verifikasi', 'lunas'=>'Lunas','ditolak'=>'Ditolak' ],
+            ],
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'urlCreator' => function ($action, $model, $key, $index) {
+                    return Url::to(['peserta/'.$action, 'id' => $model->ID]);
+                }
+            ],
+            
+            [
+                'header'=>'Verifikasi',
+                'format'=>'raw',
+                'value' => function($data){
+            if($data->status == "menunggu" || $data->status == "verifikasi"){
+            return
+            Html::a('Tolak', ['peserta/tolak', 'id' => $data->ID],['class' => 'btn btn-danger']).'&nbsp;&nbsp;'.
+            Html::a('Lunas', ['peserta/lunas', 'id' => $data->ID],['class' => 'btn btn-success']);
+            }else{
+            echo Html::a('Reset Verifikasi', ['peserta/reset', 'id' => $data->ID], ['class' => 'btn btn-default','data' => [
+                'confirm' => 'Apakah anda ingin melakukan verifikasi ulang pada data ini?',
+                'method' => 'post',
+            ],]);
+            }
+            }
+            ],
         ],
     ]); ?>
     

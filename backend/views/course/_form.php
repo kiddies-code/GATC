@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use dosamigos\datepicker\DatePicker;
+use dosamigos\datepicker\DateRangePicker;
 use yii\web\UploadedFile;
 
 /* @var $this yii\web\View */
@@ -17,50 +18,20 @@ use yii\web\UploadedFile;
     <?= $form->field($model, 'nama_course')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'detail_course')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'tanggal_pelaksanaan')->widget(
-    DatePicker::className(), [
-        // inline too, not bad
-         'inline' => false, 
-         // modify template for custom rendering
-         //'template' => '<div class="well well-sm" style="background-color: #fff; width:250px">{input}</div>',
-        'clientOptions' => [
-            'autoclose' => true,
-            'format' => 'yyyy-mm-dd'
-        ]
+    
+    <?= $form->field($model, 'tanggal_pelaksanaan')->widget(DateRangePicker::className(), [
+//    'inline'=>false,
+    'attributeTo' => 'tanggal_berakhir', 
+    'form' => $form, // best for correct client validation
+//    'language' => '',
+    'size' => 'md',
+    'clientOptions' => [
+        'autoclose' => true,
+        'format' => 'yyyy-mm-dd'
+    ]
 ]);?>
     
-    <?= $form->field($model, 'tanggal_berakhir')->widget(
-    DatePicker::className(), [
-        // inline too, not bad
-         'inline' => false, 
-         // modify template for custom rendering
-         //'template' => '<div class="well well-sm" style="background-color: #fff; width:250px">{input}</div>',
-        'clientOptions' => [
-            'autoclose' => true,
-            'format' => 'yyyy-mm-dd'
-        ]
-]);?>
-
-    <?= $form->field($model, 'harga')->textInput(['maxlength' => true]) ?>
     
-    <?= $form->field($model, 'kontak1')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'kontak2')->textInput(['maxlength' => true,'placeholder'=>'Kosongkan jika tidak ada']) ?>
-
-    <?= $form->field($model, 'kontak3')->textInput(['maxlength' => true,'placeholder'=>'Kosongkan jika tidak ada']) ?>
-
-    <?= $form->field($model, 'tanggal_buka')->widget(
-    DatePicker::className(), [
-        // inline too, not bad
-         'inline' => false, 
-         // modify template for custom rendering
-         //'template' => '<div class="well well-sm" style="background-color: #fff; width:250px">{input}</div>',
-        'clientOptions' => [
-            'autoclose' => true,
-            'format' => 'yyyy-mm-dd'
-        ]
-]);?>
 
     <?= $form->field($model, 'tanggal_tutup')->widget(
     DatePicker::className(), [
@@ -75,10 +46,28 @@ use yii\web\UploadedFile;
 ]);?>
 
     <?= $form->field($model, 'jumlah_max')->textInput(['placeholder'=>'Jika unlimited masukkan 99999']) ?>
-
-    <?= $form->field($model, 'status')->dropDownList([ 'aktif' => 'Aktif', 'nonaktif' => 'Nonaktif', ]) ?>
-
+    
+    <?= $form->field($model, 'tim_anggota')->checkbox(['uncheck' => 'N', 'value' => 'Y']); ?>
+    
     <?= $form->field($model, 'image')->fileInput() ?>
+    
+    <h4><b>Persyaratan</b></h4>
+    <div class="col-md-12">
+    <div class="col-md-3">    
+    <?= $form->field($model, 'bayar')->checkbox(['uncheck' => 'N', 'value' => 'Y']); ?>
+        </div>
+    <div class="col-md-3">
+    <?= $form->field($model, 'berkas')->checkbox(['uncheck' => 'N', 'value' => 'Y']); ?>
+        </div>
+    <div class="col-md-3">
+    <?= $form->field($model, 'proposal')->checkbox(['uncheck' => 'N', 'value' => 'Y']); ?>
+        </div>
+        <br>
+    </div>
+    
+    <?= $form->field($model, 'harga')->textInput(['maxlength' => true]) ?>
+    
+    <?= $form->field($model, 'status')->dropDownList([ 'aktif' => 'Aktif', 'nonaktif' => 'Nonaktif', ]) ?>
     
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

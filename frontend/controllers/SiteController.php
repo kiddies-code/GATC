@@ -74,7 +74,9 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $model = Course::find()->all();
+        $model = Course::find()
+            ->orderBy(['ID' => SORT_DESC])
+            ->all();
         return $this->render('index',['model'=>$model,]);
     }
 
@@ -146,7 +148,9 @@ class SiteController extends Controller
 
     public function actionCourse()
     {
-        $model = Course::find()->all();
+        $model = Course::find()
+            ->orderBy(['ID' => SORT_DESC])
+            ->all();
         return $this->render('course',['model'=>$model,]);
     }
     

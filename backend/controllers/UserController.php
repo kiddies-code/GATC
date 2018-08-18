@@ -3,7 +3,7 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\User;
+use backend\models\User;
 use backend\models\UserSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -65,8 +65,12 @@ class UserController extends Controller
     {
         $model = new User();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+        $model->password_hash = Yii::$app->security->generatePasswordHash($model->password);
+        $model->auth_key = Yii::$app->security->generateRandomString();        
+        if($model->save()){
             return $this->redirect(['view', 'id' => $model->id]);
+            }
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -84,8 +88,12 @@ class UserController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+        $model->password_hash = Yii::$app->security->generatePasswordHash($model->password);
+        $model->auth_key = Yii::$app->security->generateRandomString(); 
+        if( $model->save()){
             return $this->redirect(['view', 'id' => $model->id]);
+            }
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -121,4 +129,23 @@ class UserController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+    public function actionMati($id){
+        
+        $model = $this->findModel($id);
+        $model->status = 'nonaktif';
+        $model->save();
+        return $this->redirect(['view', 'id' => $model->id]); 
+        
+    }
+    
+    public function actionAktif($id){
+        
+        $model = $this->findModel($id);
+        $model->status = 'aktif';
+        $model->save();
+        return $this->redirect(['view', 'id' => $model->id]); 
+        
+    }
+    
 }
