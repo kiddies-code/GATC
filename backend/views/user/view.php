@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
     <br>
     <h3><b>History</b></h3>
-    
+
     <?=GridView::widget([
         'dataProvider' => new yii\data\ActiveDataProvider(['query'=>$model->getPesertaUser()]),
         'columns' => [
@@ -131,7 +131,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Url::to(['peserta/'.$action, 'id' => $model->ID]);
                 }
             ],
-            
+
             [
                 'header'=>'Verifikasi',
                 'format'=>'raw',
@@ -141,7 +141,7 @@ $this->params['breadcrumbs'][] = $this->title;
             Html::a('Tolak', ['peserta/tolak', 'id' => $data->ID],['class' => 'btn btn-danger']).'&nbsp;&nbsp;'.
             Html::a('Lunas', ['peserta/lunas', 'id' => $data->ID],['class' => 'btn btn-success']);
             }else{
-            echo Html::a('Reset Verifikasi', ['peserta/reset', 'id' => $data->ID], ['class' => 'btn btn-default','data' => [
+            return Html::a('Reset Verifikasi', ['peserta/reset', 'id' => $data->ID], ['class' => 'btn btn-default','data' => [
                 'confirm' => 'Apakah anda ingin melakukan verifikasi ulang pada data ini?',
                 'method' => 'post',
             ],]);
@@ -150,7 +150,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ],
     ]);
-    
+
     ?>
 
 </div>

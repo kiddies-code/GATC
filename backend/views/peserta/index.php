@@ -34,7 +34,7 @@ $gridColumns = [
             'anggota3',
             'anggota4',
             'status',
-            
+
 //    ['class' => 'yii\grid\ActionColumn'],
 ];
 
@@ -43,18 +43,19 @@ $gridColumns = [
 
     <h1><?= Html::encode($this->title) ?><hr style="margin-top:0px;"></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-    
+    <br>
     <span class="pull-right">
     <?=
     ExportMenu::widget([
             'dataProvider' => $dataProvider,
             'columns' => $gridColumns,
-            ]).'<br><br>'    
+            ]).'<br><br>'
         ?></span>
-    
+
      <p>
         <?= Html::a('Create Participant', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
+    <br>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -66,7 +67,7 @@ $gridColumns = [
             }else if($model->status == 'ditolak'){
                 return ['class'=>'danger'];
             }else{
-                
+
             }
         },
         'columns' => [
@@ -93,13 +94,13 @@ $gridColumns = [
                 'format'=>'raw',
                 'value' => function($data){
             if(!empty($data->f_id)){
-            return 
+            return
             '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.
             Html::a('', ['peserta/vid', 'id' => $data->ID],['class' => 'glyphicon glyphicon-paperclip ','title'=>'View file', 'data-toggle'=>'tooltip','style'=>'text-decoration: none; cursor:pointer;']);
-            
+
             }else{
             return
-            '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'. 
+            '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.
                 Html::tag('span', '', [
                 'title'=>'File empty',
                 'data-toggle'=>'tooltip',
@@ -127,7 +128,7 @@ $gridColumns = [
                 'class'=>'glyphicon glyphicon-alert',
                 'style'=>'text-decoration: none; cursor:pointer;'
             ]);
-            
+
             }
             }
             ],
@@ -142,7 +143,7 @@ $gridColumns = [
             Html::a('', ['peserta/dproposal', 'id' => $data->ID],['class' => 'glyphicon glyphicon-download-alt','title'=>'Download file', 'data-toggle'=>'tooltip','style'=>'text-decoration: none; cursor:pointer;']);
             }else{
             return
-            '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'. 
+            '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.
                 Html::tag('span', '', [
                 'title'=>'File empty',
                 'data-toggle'=>'tooltip',
@@ -163,7 +164,7 @@ $gridColumns = [
             Html::a('', ['peserta/dberkas', 'id' => $data->ID],['class' => 'glyphicon glyphicon-download-alt','title'=>'Download file', 'data-toggle'=>'tooltip','style'=>'text-decoration: none; cursor:pointer;']);
             }else{
             return
-            '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'. 
+            '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.
                 Html::tag('span', '', [
                 'title'=>'File empty',
                 'data-toggle'=>'tooltip',
@@ -180,7 +181,7 @@ $gridColumns = [
             ],
 
             ['class' => 'yii\grid\ActionColumn','header'=>'Action'],
-            
+
             [
                 'header'=>'Verifikasi',
                 'format'=>'raw',
@@ -191,8 +192,8 @@ $gridColumns = [
                 .'&nbsp;&nbsp;&nbsp;&nbsp;'.
             Html::a('', ['peserta/lunas', 'id' => $data->ID],['class' => 'glyphicon glyphicon-ok','title'=>'Terima data pendaftaran', 'data-toggle'=>'tooltip','style'=>'text-decoration: none; cursor:pointer;']);
             }else{
-            return 
-                    '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'. 
+            return
+                    '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.
                 Html::a('', ['peserta/reset', 'id' => $data->ID], ['class' => ' glyphicon glyphicon-repeat','title'=>'Atur ulang verifikasi', 'data-toggle'=>'tooltip','style'=>'text-decoration: none; cursor:pointer;','data' => [
                 'confirm' => 'Apakah anda ingin melakukan verifikasi ulang pada data ini?',
                 'method' => 'post',

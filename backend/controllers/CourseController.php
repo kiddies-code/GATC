@@ -55,7 +55,7 @@ class CourseController extends Controller
      */
     public function actionView($id)
     {
-    
+
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -73,27 +73,27 @@ class CourseController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             $image =UploadedFile::getInstance($model,'image');
             if(!empty($image)){
-            $NameImage = $model->ID.'.'.$image->extension;
+            $NameImage = $model->nama_course.'-'.date('YmdHis').'.'.$image->extension;
             $model->image = 'uploads/'.$NameImage;
             if ($model->save()){
             $image -> saveAs('uploads/'.$NameImage);
             mkdir('../../frontend/web/uploads/'.$model->nama_course.'/');
-            return $this->redirect(['view', 'id' => $model->ID]); 
+            return $this->redirect(['view', 'id' => $model->ID]);
             }
             }
             $model->save();
             mkdir('../../frontend/web/uploads/'.$model->nama_course.'/');
-            return $this->redirect(['view', 'id' => $model->ID]); 
+            return $this->redirect(['view', 'id' => $model->ID]);
         } else {
             return $this->render('create', [
                 'model' => $model,
             ]);
         }
     }
-    
-//    public function actionDownload($id) 
-//    { 
-//    $download = Peserta::findOne($id); 
+
+//    public function actionDownload($id)
+//    {
+//    $download = Peserta::findOne($id);
 //    $path=Yii::getAlias('@webroot').'web/'.$download->bukti_bayar;
 //    if (file_exists($path)) {
 //
@@ -116,10 +116,11 @@ class CourseController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             $image =UploadedFile::getInstance($model,'image');
             if(!empty($image)){
-            $NameImage = $model->ID.'.'.$image->extension;
+            $NameImage = $model->nama_course.'-'.date('YmdHis').'.'.$image->extension;
             $model->image = 'uploads/'.$NameImage;
             if ($model->save()){
             $image -> saveAs('uploads/'.$NameImage);
+            unlink($sementara);
             rename($pathlama,'../../frontend/web/uploads/'.$model->nama_course.'/');
             return $this->redirect(['view', 'id' => $model->ID]);
             }
@@ -165,10 +166,10 @@ class CourseController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-    
-     public function actionDpeserta($id) 
-   { 
-    $download = Peserta::findOne($id); 
+
+     public function actionDpeserta($id)
+   {
+    $download = Peserta::findOne($id);
     $path='../../frontend/web/uploads/'.$download->coursePeserta->nama_course.'/'.$download->bukti_bayar;
     if (file_exists($path)) {
         return Yii::$app->response->sendFile($path);
@@ -176,10 +177,10 @@ class CourseController extends Controller
         echo 'file not exists...';
     }
    }
-    
-    public function actionVpeserta($id) 
-   { 
-    $download = Peserta::findOne($id); 
+
+    public function actionVpeserta($id)
+   {
+    $download = Peserta::findOne($id);
     $path='../../frontend/web/uploads/'.$download->coursePeserta->nama_course.'/'.$download->bukti_bayar;
     if (file_exists($path)) {
         return Yii::$app->response->sendFile($path,$download->bukti_bayar,['inline'=>true]);

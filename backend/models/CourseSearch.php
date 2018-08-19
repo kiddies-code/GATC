@@ -19,8 +19,8 @@ class CourseSearch extends Course
     {
         return [
             [['ID', 'jumlah_peserta', 'jumlah_max', 'harga'], 'integer'],
-            [['nama_course', 'detail_course', 'tanggal_pelaksanaan', 'kontak1', 'kontak2', 'kontak3', 'tanggal_tutup', 
-//            'tanggal_berakhir',   
+            [['nama_course', 'detail_course', 'tanggal_pelaksanaan', 'kontak1', 'kontak2', 'kontak3', 'tanggal_tutup',
+//            'tanggal_berakhir',
             'status','bayar','berkas','proposal','tim_anggota'], 'safe'],
         ];
     }
@@ -58,12 +58,12 @@ class CourseSearch extends Course
             // $query->where('0=1');
             return $dataProvider;
         }
-        
+
         // grid filtering conditions
         $query->andFilterWhere([
             'ID' => $this->ID,
 //            'between', $this->tanggal_pelaksanaan, 'tanggal_pelaksanaan', 'tanggal_berakhir',
-            'tanggal_pelaksanaan' => $this->tanggal_pelaksanaan,
+            // 'tanggal_pelaksanaan' => $this->tanggal_pelaksanaan,
 //            'tanggal_berakhir' => $this->tanggal_berakhir,
 //            'tanggal_buka' => $this->tanggal_buka,
             'tanggal_tutup' => $this->tanggal_tutup,
@@ -75,6 +75,7 @@ class CourseSearch extends Course
 //            ->andFilterWhere(['like', 'kontak2', $this->kontak2])
 //            ->andFilterWhere(['like', 'kontak3', $this->kontak3])
             ->andFilterWhere(['like', 'status', $this->status])
+            ->andFilterWhere(['like', 'tanggal_pelaksanaan', $this->tanggal_pelaksanaan])
             ->andFilterWhere(['like', 'harga', $this->harga])
             ->andFilterWhere(['like', 'bayar', $this->bayar])
             ->andFilterWhere(['like', 'berkas', $this->berkas])
@@ -82,7 +83,7 @@ class CourseSearch extends Course
             ->andFilterWhere(['like', 'tim_anggota', $this->tim_anggota])
             ->andFilterWhere(['like', 'jumlah_peserta', $this->jumlah_peserta])
             ->andFilterWhere(['like', 'jumlah_max', $this->jumlah_max]);
-           
+
         return $dataProvider;
     }
 }

@@ -21,20 +21,20 @@ $gridColumns = [
 ];
 ?>
 <div class="user-index">
-    <h1><?= Html::encode($this->title) ?><hr style="margin-top:0px;"></h1>
+    <h1><?= Html::encode($this->title) ?><hr style="margin-top:0px;"></h1><br>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-    
+
     <span class="pull-right">
     <?=
     ExportMenu::widget([
             'dataProvider' => $dataProvider,
             'columns' => $gridColumns,
-            ]).'<br>'    
+            ]).'<br>'
     ?></span>
 
     <p>
         <?= Html::a('Create User', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    </p><br>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -42,7 +42,7 @@ $gridColumns = [
             if($model->status == 'nonaktif'){
                 return ['class'=>'danger'];
             }else{
-                
+
             }
         },
         'columns' => [
@@ -84,7 +84,7 @@ $gridColumns = [
 //            }
 //            }
 //            ],
-        
+
         ],
     ]); ?>
 </div>

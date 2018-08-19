@@ -42,10 +42,11 @@ AppAsset::register($this);
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {
         $menuItems = [
-            ['label' => 'Course', 'url' => ['course/index']],
             ['label' => 'User', 'url' => ['user/index']],
+            ['label' => 'Course', 'url' => ['course/index']],
             ['label' => 'Participant', 'url' => ['peserta/index']],
-            
+            ['label' => 'News', 'url' => ['berita/index']],
+
             '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(

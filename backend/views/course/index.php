@@ -16,7 +16,7 @@ $gridColumns = [
 //    ['class' => 'yii\grid\SerialColumn'],
 //            'ID',
             'nama_course',
-            'detail_course',
+            // 'detail_course',
             'tanggal_pelaksanaan',
             'tanggal_berakhir',
             'tanggal_tutup',
@@ -28,7 +28,7 @@ $gridColumns = [
             'bayar',
             'harga',
             'status',
-            
+
 //    ['class' => 'yii\grid\ActionColumn'],
 ];
 
@@ -37,17 +37,18 @@ $gridColumns = [
 
     <h1><?= Html::encode($this->title) ?><hr style="margin-top:0px;"></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
+<br>
     <span class="pull-right">
     <?=
     ExportMenu::widget([
             'dataProvider' => $dataProvider,
             'columns' => $gridColumns,
-            ]).'<br><br>'    
+            ]).'<br><br>'
         ?></span>
     <p>
         <?= Html::a('Create Course', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
+    <br>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -55,7 +56,7 @@ $gridColumns = [
             if($model->status == 'nonaktif'){
                 return ['class'=>'danger'];
             }else{
-                
+
             }
         },
         'columns' => [
@@ -76,10 +77,11 @@ $gridColumns = [
                         'model' => $searchModel,
                         'attribute' => 'tanggal_pelaksanaan',
                             'clientOptions' => [
+                              'minViewMode'=>'months',
                                 'autoclose' => true,
-                                'format' => 'yyyy-mm-dd'
+                                'format' => 'yyyy-mm'
                             ]
-                    ])        
+                    ])
             ],
             [
                 'attribute'=>'tanggal_berakhir',
@@ -106,10 +108,11 @@ $gridColumns = [
                         'model' => $searchModel,
                         'attribute' => 'tanggal_tutup',
                             'clientOptions' => [
+                              'minViewMode'=>'months',
                                 'autoclose' => true,
-                                'format' => 'yyyy-mm-dd'
+                                'format' => 'yyyy-mm'
                             ]
-                    ])        
+                    ])
             ],
              'jumlah_peserta',
              'jumlah_max',
@@ -137,6 +140,13 @@ $gridColumns = [
             // 'image',
 
             ['class' => 'yii\grid\ActionColumn'],
+
         ],
+        // 'options' => [
+        //                             'changeMonth'=>true,
+        //                             'changeYear'=>true,
+        //                             'changeDay'=>false,
+        //                         ]
+
     ]); ?>
 </div>

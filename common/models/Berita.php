@@ -4,28 +4,55 @@ namespace common\models;
 
 use Yii;
 
+use yii\db\ActiveRecord;
+use yii\db\Expression;
+use yii\behaviors\TimestampBehavior;
+use yii\behaviors\SluggableBehavior;
+
 /**
  * This is the model class for table "berita".
  *
  * @property integer $ID
  * @property string $judul
+ * @property string $sampul
  * @property string $isi
+ * @property string $slug
  * @property string $update_at
  * @property string $publish_at
  * @property integer $oleh
  *
  * @property User $oleh0
- * @property Foto[] $fotos
  */
 class Berita extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
+
+     public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['publish_at', 'update_at'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['update_at'],
+                ],
+                'value' => new Expression('NOW()'),
+            ],
+            [
+            'class' => SluggableBehavior::className(),
+            'attribute' => 'judul',
+            // 'slugAttribute' => 'slug',
+        ],
+        ];
+    }
+
     public static function tableName()
     {
         return 'berita';
     }
+
 
     /**
      * @inheritdoc
@@ -37,7 +64,8 @@ class Berita extends \yii\db\ActiveRecord
             [['isi'], 'string'],
             [['update_at', 'publish_at'], 'safe'],
             [['oleh'], 'integer'],
-            [['judul'], 'string', 'max' => 250],
+            [['sampul'],'file',],
+            [['judul', 'slug'], 'string', 'max' => 250],
             [['oleh'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['oleh' => 'id']],
         ];
     }
@@ -49,8 +77,10 @@ class Berita extends \yii\db\ActiveRecord
     {
         return [
             'ID' => 'ID',
-            'judul' => 'Judul Berita',
-            'isi' => 'Konten',
+            'judul' => 'Judul',
+            'sampul' => 'Sampul',
+            'isi' => 'Isi',
+            'slug' => 'Slug',
             'update_at' => 'Update At',
             'publish_at' => 'Publish At',
             'oleh' => 'Oleh',
@@ -60,16 +90,8 @@ class Berita extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getUserBerita()
+    public function getOleh0()
     {
         return $this->hasOne(User::className(), ['id' => 'oleh']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getFotoBerita()
-    {
-        return $this->hasMany(Foto::className(), ['id_berita' => 'ID']);
     }
 }

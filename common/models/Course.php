@@ -47,7 +47,7 @@ class Course extends \yii\db\ActiveRecord
             [['tanggal_pelaksanaan', 'tanggal_berakhir', 'tanggal_tutup'], 'safe'],
             [['harga', 'jumlah_peserta', 'jumlah_max'], 'integer'],
             [['nama_course'], 'string', 'max' => 200],
-            [['image'], 'file', 'extensions' => 'png,jpeg,jpeg'],
+            [['image'], 'file', 'extensions' => 'png,jpeg,jpg'],
         ];
     }
 
