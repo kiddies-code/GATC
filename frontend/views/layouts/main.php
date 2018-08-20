@@ -40,8 +40,9 @@ AppAsset::register($this);
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
         ['label' => 'Courses', 'url' => ['/site/course']],
+        ['label' => 'News', 'url' => ['/berita/index']],
         ['label' => 'Staff', 'url' => ['/site/staff']],
-        
+
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
@@ -50,6 +51,7 @@ AppAsset::register($this);
         $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
         ['label' => 'Courses', 'url' => ['/site/course']],
+        ['label' => 'News', 'url' => ['/berita/index']],
         ['label' => 'Registered', 'url' => ['/peserta/index']],
         ['label' => 'Staff', 'url' => ['/site/staff']],
             '<li>'
@@ -68,7 +70,7 @@ AppAsset::register($this);
     NavBar::end();
     ?>
 
-    <div class="container">
+    <div >
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
@@ -81,7 +83,7 @@ AppAsset::register($this);
     <div class="container">
         <p class="pull-left">&copy; <?= 'GontorATC' ?> <?= date('Y') ?></p>
 
-        
+
     </div>
 </footer>
 

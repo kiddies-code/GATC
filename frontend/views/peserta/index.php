@@ -9,7 +9,7 @@ use yii\widgets\Pjax;
 
 $this->title = 'Registered';
 ?>
-<div class="peserta-index">
+<div class="peserta-index container" style="padding:75px 0px 0px 0px;"">
 
     <h1 style='margin-bottom:0px;margin-top:0px;'><?= Html::encode($this->title) ?></h1>
      <hr style='margin-top:0px;'>

@@ -34,9 +34,6 @@ use marqu3s\summernote\Summernote;
         'autoclose' => true,
         'format' => 'yyyy-mm-dd'
     ],
-    'optionsTo'=>[
-      'placeholder'=>'Kosongkan jika acara hanya dilaksanakan dalam sehari'
-    ]
 ]);?>
 
 

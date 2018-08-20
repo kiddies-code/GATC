@@ -10,7 +10,7 @@ use yii\bootstrap\ActiveForm;
 $this->title = 'Signup';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-signup">
+<div class="site-signup container">
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>Please fill out the following fields to signup:</p>
@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $form->field($model, 'email') ?>
 
                 <?= $form->field($model, 'password')->passwordInput() ?>
-            
+
 <!--          $form->field($model, 'status_admin')->dropDownList(['user'=>'User','admin'=>'Admin'])-->
 
                 <div class="form-group">

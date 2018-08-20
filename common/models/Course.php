@@ -3,6 +3,9 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\StringHelper;
+use yii\db\ActiveRecord;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "course".
@@ -75,6 +78,13 @@ class Course extends \yii\db\ActiveRecord
         ];
     }
 
+
+    public function getPrev(){
+      $wording = 50;
+      if(StringHelper::countWords($this->detail_course) > $wording){
+        return StringHelper::truncateWords($this->detail_course, $wording);
+      }
+    }
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -82,6 +92,8 @@ class Course extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Cp::className(), ['id_course' => 'ID']);
     }
+
+
 
     /**
      * @return \yii\db\ActiveQuery

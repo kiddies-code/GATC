@@ -10,7 +10,7 @@ $this->title = $model->nama_course;
 $this->params['breadcrumbs'][] = ['label' => 'Course', 'url' => ['course']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="course-view ">
+<div class="course-view container">
 
     <div class="kursus col-lg-12">
 <p align='center'>

@@ -5,6 +5,7 @@ use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
+use yii\data\ActiveDataProvider;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
@@ -14,6 +15,7 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use common\models\Peserta;
+use common\models\Berita;
 
 /**
  * Site controller
@@ -74,10 +76,28 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $model = Course::find()
-            ->orderBy(['ID' => SORT_DESC])
-            ->all();
-        return $this->render('index',['model'=>$model,]);
+        // $model = Course::find()
+        //     ->orderBy(['ID' => SORT_DESC])
+        //     ->all();
+
+        $course = new ActiveDataProvider([
+          'query'=>Course::find()->orderBy('tanggal_tutup DESC'),
+          'pagination'=>[
+          'pageSize'=>3
+        ]
+        ]);
+
+        $berita = new ActiveDataProvider([
+          'query'=>Berita::find()->orderBy('publish_at DESC'),
+          'pagination'=>[
+            'pageSize'=>4
+          ]
+        ]);
+
+        return $this->render('index',[
+          'course'=>$course,
+          'berita'=>$berita,
+        ]);
     }
 
     /**
@@ -153,15 +173,15 @@ class SiteController extends Controller
             ->all();
         return $this->render('course',['model'=>$model,]);
     }
-    
+
     public function actionViewcourse($ID)
     {
-    
+
         return $this->render('viewcourse', [
             'model' => $this->findModelcourse($ID),
         ]);
     }
-    
+
     /**
      * Signs user up.
      *
@@ -231,7 +251,7 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
-    
+
      protected function findModelcourse($ID)
     {
         if (($model = Course::findOne($ID)) !== null) {

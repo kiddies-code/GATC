@@ -7,7 +7,7 @@ use yii\helpers\Html;
 $this->title = 'Staff';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-index">
+<div class="site-index container">
 
     <div class="body-content">
 
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class='col-lg-12'>
     <h2 align='center'>Staff Manajemen</h2>
         <br>
-        
+
     <div class='col-lg-5 pull-left profile'>
           <table>
             <tr>
@@ -29,8 +29,8 @@ $this->params['breadcrumbs'][] = $this->title;
             </td>
             </tr>
             </table>
-    </div>   
-        
+    </div>
+
     <div class='col-lg-5 pull-right profile'>
           <table>
             <tr>
@@ -43,9 +43,9 @@ $this->params['breadcrumbs'][] = $this->title;
             </td>
             </tr>
             </table>
-    </div>    
     </div>
-    
+    </div>
+
     <div class='col-lg-12'>
         <br>
     <div class="col-lg-5">
@@ -62,7 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </tr>
             </table>
         </div>
-        
+
         <div class="profile">
             <table>
             <tr>
@@ -75,7 +75,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </tr>
             </table>
         </div>
-        
+
         <div class="profile">
             <table>
             <tr>
@@ -88,7 +88,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </tr>
             </table>
         </div>
-        
+
         <div class="profile">
             <table>
             <tr>
@@ -101,7 +101,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </tr>
             </table>
         </div>
-        
+
         <div class="profile">
             <table>
             <tr>
@@ -114,7 +114,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </tr>
             </table>
         </div>
-        
+
         <div class="profile">
             <table>
             <tr>
@@ -127,7 +127,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </tr>
             </table>
         </div>
-        
+
         <div class="profile">
             <table>
             <tr>
@@ -140,7 +140,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </tr>
             </table>
         </div>
-        
+
         <div class="profile">
             <table>
             <tr>
@@ -154,7 +154,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </table>
         </div>
     </div>
-    
+
         <div class="col-lg-5 pull-right">
         <h3 align='center'>Asisten</h3><br>
         <div class="profile">
@@ -169,7 +169,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </tr>
             </table>
         </div>
-        
+
         <div class="profile">
             <table>
             <tr>
@@ -182,7 +182,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </tr>
             </table>
         </div>
-        
+
         <div class="profile">
             <table>
             <tr>
@@ -197,8 +197,8 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
 
     </div>
-        
+
     </div>
-    
+
 </div>
 </div>

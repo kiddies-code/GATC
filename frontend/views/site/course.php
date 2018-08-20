@@ -5,14 +5,13 @@
 use yii\helpers\Html;
 
 $this->title = 'Courses';
-
 ?>
-<div class="site-index" style="padding:0px 10px 0px 10px;">
-<h1 style='margin-bottom:0px;margin-top:0px;'>Courses</h1>
-    <hr style='margin-top:0px;margin-right:25px;'>
+<div class="site-index container" style="padding:75px 10px 0px 10px;">
+<!-- <h1 style='margin-bottom:0px;margin-top:0px;'>Courses</h1> -->
+    <!-- <hr style='margin-top:0px;margin-right:25px;'> -->
 <div class="body-content">
 <?php
-foreach($model as $C){ 
+foreach($model as $C){
 if($C->status =='aktif'){
 
 ?>
@@ -24,18 +23,18 @@ if($C->status =='aktif'){
         <?= Html::a('<b style="font-size:22px;color:#336033">'.$C->nama_course.'</b>',['site/viewcourse','ID'=>$C->ID])."<hr style='margin-top:0px;border-color:#c6c2c2;'>"; ?>
     <p align='justify' style='margin-right:15px'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= substr($C->detail_course,0,350)."..."; ?> </p>
     <br>
-        <span class="pull-left "><b style="font-size:16px">Kuota Peserta: 
-            
-            
+        <span class="pull-left "><b style="font-size:16px">Kuota Peserta:
+
+
             <?php
                 if($C->jumlah_max==99999){
-                  echo 'Unlimited </b>';  
+                  echo 'Unlimited </b>';
                 }else{
                     echo $C->jumlah_max.' orang </b>';
-                } 
-            ?> 
+                }
+            ?>
 <!--            orang</b>-->
-            
+
             <br>
         <b style="font-size:18px"><?= 'Batas akhir pendaftaran: '.$C->tanggal_tutup; ?></b><br>
         <b style="font-size:18px">
@@ -48,11 +47,11 @@ if($C->status =='aktif'){
             ?></b>
         </span>
         <span class="pull-right"><br><br>
-            <!-- 
+            <!--
                 if(!Yii::$app->user->isGuest){
-                echo Html::a('Daftar Sekarang &raquo;',['peserta/create','id_kursus'=>$C->ID],['class'=>'btn btn-default']); 
+                echo Html::a('Daftar Sekarang &raquo;',['peserta/create','id_kursus'=>$C->ID],['class'=>'btn btn-default']);
                 }else{
-                echo Html::a('Daftar Sekarang &raquo;',['login'],['class'=>'btn btn-default']); 
+                echo Html::a('Daftar Sekarang &raquo;',['login'],['class'=>'btn btn-default']);
                 }
             -->
         </span>

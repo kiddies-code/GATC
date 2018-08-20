@@ -8,6 +8,7 @@ use yii\db\ActiveRecord;
 use yii\db\Expression;
 use yii\behaviors\TimestampBehavior;
 use yii\behaviors\SluggableBehavior;
+use yii\helpers\StringHelper;
 
 /**
  * This is the model class for table "berita".
@@ -85,6 +86,13 @@ class Berita extends \yii\db\ActiveRecord
             'publish_at' => 'Publish At',
             'oleh' => 'Oleh',
         ];
+    }
+
+    public function getPreview(){
+      $words = 90;
+      if(StringHelper::countWords($this->isi) > $words){
+        return StringHelper::truncateWords($this->isi, $words);
+      }
     }
 
     /**
