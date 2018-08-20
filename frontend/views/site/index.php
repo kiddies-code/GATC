@@ -16,26 +16,26 @@ $this->title = 'Gontor Agrotech Training Center';
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
       <div class="item active">
-        <img src="<?= Yii::$app->urlManager->baseUrl ?>/images/back-site.png" alt="New York" width="100%" height="100">
+        <img src="<?= Yii::$app->urlManager->baseUrl ?>/images/1.png" alt="" width="100%" height="100">
         <div class="carousel-caption">
           <!-- <h3>New York</h3> -->
-          <p>The atmosphere in New York is lorem ipsum.</p>
+          <p></p>
         </div>
       </div>
 
       <div class="item">
-        <img src="<?= Yii::$app->urlManager->baseUrl ?>/images/back-site.png" alt="Chicago" width="100%" height="100">
+        <img src="<?= Yii::$app->urlManager->baseUrl ?>/images/2.png" alt="" width="100%" height="100">
         <div class="carousel-caption">
           <!-- <h3>Chicago</h3> -->
-          <p>Thank you, Chicago - A night we won't forget.</p>
+          <p></p>
         </div>
       </div>
 
       <div class="item">
-        <img src="<?= Yii::$app->urlManager->baseUrl ?>/images/back-site.png" alt="Los Angeles" width="100%" height="100">
+        <img src="<?= Yii::$app->urlManager->baseUrl ?>/images/3.png" alt="" width="100%" height="100">
         <div class="carousel-caption">
           <!-- <h3>LA</h3> -->
-          <p>Even though the traffic was a mess, we had the best time playing at Venice Beach!</p>
+          <p></p>
         </div>
       </div>
     </div>
