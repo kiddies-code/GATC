@@ -9,12 +9,13 @@ $formatter = \Yii::$app->formatter;
 <div class="col-md-12" >
   <div class="panel panel-default" style="border-radius:0px;">
     <div class="panel-body" >
-      <h4 align='left' style="margin: 0px 0px 0px 0px;" ><?= Html::a($model->nama_course,['site/viewcourse','ID' => $model->ID]) ?></h4><hr style="margin:5px 0px 10px 0px;">
       <div>
       <div class="col-md-3">
-        <img src="<?= Yii::$app->urlManagerBackend->baseUrl ?><?= '/'.$model->image ?>" alt="test" width="100%" height='50%' style="box-shadow: 0px 0px 3px grey;" >
+        <img class="img-square" src="<?= Yii::$app->urlManagerBackend->baseUrl ?><?= '/'.$model->image ?>" alt="test" width="100%" height='50%' style="box-shadow: 0px 0px 3px grey;" >
       </div>
-      <div class="col-md-9"><p style="padding-top:5px;"><?= $model->prev; ?></p><br></div>
+      <div class="col-md-9">
+        <h4 align='left' style="margin: 0px 0px 0px 0px;" ><?= Html::a($model->nama_course,['site/viewcourse','ID' => $model->ID]) ?></h4><hr style="margin:5px 0px 10px 0px;">
+        <p style="padding-top:5px;"><?= $model->prev; ?></p><br></div>
     </div>
       <div class="text-right">
         <span class="label label-danger" style="font-size:13px;"><span class="glyphicon glyphicon-exclamation-sign"></span>
