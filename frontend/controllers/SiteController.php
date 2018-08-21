@@ -81,7 +81,7 @@ class SiteController extends Controller
         //     ->all();
 
         $course = new ActiveDataProvider([
-          'query'=>Course::find()->orderBy('tanggal_tutup DESC'),
+          'query'=>Course::find()->where(['status' => 'aktif'])->orderBy('tanggal_tutup DESC'),
           'pagination'=>[
           'pageSize'=>3
         ]
