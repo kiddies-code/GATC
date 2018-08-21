@@ -6,7 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Beritas';
+$this->title = 'Gontor Agrotech Training Center';
 
 ?>
 <div class="berita-index container" style="padding-top:65px;">

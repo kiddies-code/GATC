@@ -18,7 +18,7 @@ $this->title = 'Gontor Agrotech Training Center';
       <div class="item active">
         <img src="<?= Yii::$app->urlManager->baseUrl ?>/images/1.png" alt="" width="100%" height="100">
         <div class="carousel-caption">
-          <!-- <h3>New York</h3> -->
+          <h4>Pelatihan Terbaik</h4>
           <p></p>
         </div>
       </div>
@@ -26,7 +26,7 @@ $this->title = 'Gontor Agrotech Training Center';
       <div class="item">
         <img src="<?= Yii::$app->urlManager->baseUrl ?>/images/2.png" alt="" width="100%" height="100">
         <div class="carousel-caption">
-          <!-- <h3>Chicago</h3> -->
+          <h4>Pendampingan Menyeluruh</h4>
           <p></p>
         </div>
       </div>
@@ -34,7 +34,7 @@ $this->title = 'Gontor Agrotech Training Center';
       <div class="item">
         <img src="<?= Yii::$app->urlManager->baseUrl ?>/images/3.png" alt="" width="100%" height="100">
         <div class="carousel-caption">
-          <!-- <h3>LA</h3> -->
+          <h4>Keterampilan dan Kreatifitas</h4>
           <p></p>
         </div>
       </div>

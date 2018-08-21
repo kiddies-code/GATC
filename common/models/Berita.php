@@ -95,6 +95,13 @@ class Berita extends \yii\db\ActiveRecord
       }
     }
 
+    public function getFly(){
+      $wor = 50;
+      if(StringHelper::countWords($this->isi) > $wor){
+        return StringHelper::truncateWords($this->isi, $wor);
+      }
+    }
+
     /**
      * @return \yii\db\ActiveQuery
      */

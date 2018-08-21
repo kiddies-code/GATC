@@ -111,16 +111,36 @@ class SiteController extends Controller
             return $this->goHome();
         }
 
+        $mode = new SignupForm();
+        if ($mode->load(Yii::$app->request->post())) {
+            if ($user = $mode->signup()) {
+                if (Yii::$app->getUser()->login($user)) {
+                    return $this->goHome();
+                }
+            }
+        }
+
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         } else {
             return $this->render('login', [
                 'model' => $model,
+                'mode' => $mode,
             ]);
         }
+
+
     }
 
+    public function actionSignup()
+    {
+
+
+        return $this->render('signup', [
+            'mode' => $mode,
+        ]);
+    }
     /**
      * Logs out the current user.
      *
@@ -168,10 +188,15 @@ class SiteController extends Controller
 
     public function actionCourse()
     {
-        $model = Course::find()
-            ->orderBy(['ID' => SORT_DESC])
-            ->all();
-        return $this->render('course',['model'=>$model,]);
+      $course = new ActiveDataProvider([
+        'query'=>Course::find()->where(['status' => 'aktif'])->orderBy('tanggal_tutup DESC'),
+        'pagination'=>[
+        'pageSize'=>5
+      ]
+      ]);
+        return $this->render('course',[
+          'course'=>$course,
+        ]);
     }
 
     public function actionViewcourse($ID)
@@ -187,21 +212,7 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionSignup()
-    {
-        $model = new SignupForm();
-        if ($model->load(Yii::$app->request->post())) {
-            if ($user = $model->signup()) {
-                if (Yii::$app->getUser()->login($user)) {
-                    return $this->goHome();
-                }
-            }
-        }
 
-        return $this->render('signup', [
-            'model' => $model,
-        ]);
-    }
 
     /**
      * Requests password reset.

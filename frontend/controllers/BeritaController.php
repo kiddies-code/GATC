@@ -54,8 +54,17 @@ class BeritaController extends Controller
      */
     public function actionView($id)
     {
+
+        $berita = new ActiveDataProvider([
+          'query'=>Berita::find()->orderBy('publish_at DESC'),
+          'pagination'=>[
+            'pageSize'=>3
+          ]
+        ]);
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'berita' => $berita,
         ]);
     }
 
