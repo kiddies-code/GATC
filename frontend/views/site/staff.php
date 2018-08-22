@@ -11,12 +11,12 @@ $this->title = 'Gontor Agrotech Training Center';
 <h2 align='center' style="color:white;">Staf Manajemen</h2><br>
 <div class="row " style="padding:0px 100px 0px 100px">
   <div class="col-sm-6 text-center" style="color:white;">
-          <img src="<?= Yii::$app->urlManager->baseUrl ?>/images/blank_foto.png" class="img-circle" width="150" height="150" style="margin-bottom:15px;" >
+          <img src="<?= Yii::$app->urlManager->baseUrl ?>/images/alfu.png" class="img-circle" width="150" height="150" style="margin-bottom:15px;" >
       <h4><b>Alfu Laila, SP., M.Sc</b></h4>
           <h4>( Ketua )</h4>
   </div>
   <div class="col-sm-6 text-center" style="color:white">
-          <img src="<?= Yii::$app->urlManager->baseUrl ?>/images/blank_foto.png" class="img-circle " width="150" height="150" style="margin-bottom:15px;" >
+          <img src="<?= Yii::$app->urlManager->baseUrl ?>/images/lutfy.png" class="img-circle " width="150" height="150" style="margin-bottom:15px;" >
       <h4><b>Lutfy Ditya C., S.P., M.P</b></h4>
           <h4>( Sekretaris )</h4>
   </div>
@@ -29,7 +29,7 @@ $this->title = 'Gontor Agrotech Training Center';
 <div class="col-md-12">
 <div class="col-sm-3 text-center" style="margin-bottom:25px;">
   <a href="#demo" data-toggle="collapse">
-        <img src="<?= Yii::$app->urlManager->baseUrl ?>/images/blank_foto.png" class="img-circle person" width="150" height="150" >
+        <img src="<?= Yii::$app->urlManager->baseUrl ?>/images/alfu.png" class="img-circle person" width="150" height="150" >
   </a>
   <div id="demo" class="collapse" >
     <h4><b>Alfu Laila, SP., M.Sc</b></h4>
@@ -45,7 +45,7 @@ $this->title = 'Gontor Agrotech Training Center';
 </div>
 <div class="col-sm-3 text-center" style="margin-bottom:25px;">
   <a href="#demo3" data-toggle="collapse">
-        <img src="<?= Yii::$app->urlManager->baseUrl ?>/images/blank_foto.png" class="img-circle person" width="150" height="150" >
+        <img src="<?= Yii::$app->urlManager->baseUrl ?>/images/use.png" class="img-circle person" width="150" height="150" >
   </a>
   <div id="demo3" class="collapse" >
     <h4><b>Use Etica, SP., MMA</b></h4>
@@ -53,7 +53,7 @@ $this->title = 'Gontor Agrotech Training Center';
 </div>
 <div class="col-sm-3 text-center" style="margin-bottom:25px;">
   <a href="#demo4" data-toggle="collapse">
-        <img src="<?= Yii::$app->urlManager->baseUrl ?>/images/blank_foto.png" class="img-circle person" width="150" height="150" >
+        <img src="<?= Yii::$app->urlManager->baseUrl ?>/images/lutfy.png" class="img-circle person" width="150" height="150" >
   </a>
   <div id="demo4" class="collapse" >
     <h4><b>Lutfy Ditya C., S.P., M.P</b></h4>
@@ -62,7 +62,7 @@ $this->title = 'Gontor Agrotech Training Center';
 </div><div class="col-md-12" >
 <div class="col-sm-3 text-center" style="margin-bottom:25px;">
   <a href="#demo5" data-toggle="collapse">
-        <img src="<?= Yii::$app->urlManager->baseUrl ?>/images/blank_foto.png" class="img-circle person" width="150" height="150" >
+        <img src="<?= Yii::$app->urlManager->baseUrl ?>/images/niken.png" class="img-circle person" width="150" height="150" >
   </a>
   <div id="demo5" class="collapse" >
     <h4><b>Niken Trisnaningrum, S.P., M.Si</b></h4>

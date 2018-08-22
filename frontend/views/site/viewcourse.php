@@ -24,7 +24,7 @@ $this->title = $model->nama_course;
   <div class="col-md-7">
 <div>
 <div class="col-md-5" style="margin-bottom:5px;">
-    <span class="" style="font-size:13px;border-radius:0px 15px 15px 0px;background-color:blue;color:white;padding:5px 7px 5px 5px;"><b>Akhir Pendaftaran </b></span>
+    <span class="" style="font-size:13px;border-radius:0px 15px 15px 0px;background-color:#1b5e20;color:white;padding:5px 7px 5px 5px;"><b>Akhir Pendaftaran </b></span>
 </div>
 <div class="col-md-7" style="margin-bottom:15px;">
     <span style="font-size:14px;"><?= $formatter->asDate($model->tanggal_tutup, 'long') ?></span>
@@ -33,7 +33,7 @@ $this->title = $model->nama_course;
 
 <div>
 <div class="col-md-4" style="margin-bottom:5px;">
-    <span class="" style="font-size:13px;border-radius:0px 15px 15px 0px;background-color:blue;color:white;padding:5px 7px 5px 5px;"><b>Pelaksanaan </b></span>
+    <span class="" style="font-size:13px;border-radius:0px 15px 15px 0px;background-color:#2e7d32;color:white;padding:5px 7px 5px 5px;"><b>Pelaksanaan </b></span>
 </div>
 <div class="col-md-8" style="margin-bottom:15px;">
     <span style="font-size:14px;">
@@ -50,7 +50,7 @@ $this->title = $model->nama_course;
 
 <div>
 <div class="col-md-4" style="margin-bottom:5px;">
-    <span class="" style="font-size:13px;border-radius:0px 15px 15px 0px;background-color:blue;color:white;padding:5px 7px 5px 5px;"><b>Pembayaran</b></span>
+    <span class="" style="font-size:13px;border-radius:0px 15px 15px 0px;background-color:#388e3c;color:white;padding:5px 7px 5px 5px;"><b>Pembayaran</b></span>
 </div>
 <div class="col-md-8" style="margin-bottom:15px;">
     <span style="font-size:14px;">
@@ -67,7 +67,7 @@ $this->title = $model->nama_course;
 
 <div>
 <div class="col-md-3" style="margin-bottom:5px;">
-    <span class="" style="font-size:13px;border-radius:0px 15px 15px 0px;background-color:blue;color:white;padding:5px 7px 5px 5px;"><b>Kuota</b></span>
+    <span class="" style="font-size:13px;border-radius:0px 15px 15px 0px;background-color:#43a047;color:white;padding:5px 7px 5px 5px;"><b>Kuota</b></span>
 </div>
 <div class="col-md-9" style="margin-bottom:15px;">
     <span style="font-size:14px;">
@@ -84,7 +84,7 @@ $this->title = $model->nama_course;
 
 <div>
 <div class="col-md-5" style="margin-bottom:5px;">
-    <span class="" style="font-size:13px;border-radius:0px 15px 15px 0px;background-color:blue;color:white;padding:5px 7px 5px 5px;"><b>Team / Individu</b></span>
+    <span class="" style="font-size:13px;border-radius:0px 15px 15px 0px;background-color:#4caf50;color:white;padding:5px 7px 5px 5px;"><b>Team / Individu</b></span>
 </div>
 <div class="col-md-7" style="margin-bottom:15px;">
     <span style="font-size:14px;">
